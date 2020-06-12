@@ -12,7 +12,7 @@ router.get('/',async(req,res)=>{
             res.status(404).json({Message:'No ToDo Tasks!!'})
         }
     }catch(err){
-        res.status(500).send('Error'+err)
+        res.send('Fuck')
     }
 })
 
