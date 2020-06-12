@@ -6,7 +6,7 @@ router.get('/',async(req,res)=>{
     try{
         const List= await Entire.find()
         if(List.length==0){
-            res.status(404).send(null,'No ToDo Lists are there right now!!')
+            res.status(500).send(null,'No ToDo Lists are there right now!!')
         }else{
         res.status(200).json(List)
         }
