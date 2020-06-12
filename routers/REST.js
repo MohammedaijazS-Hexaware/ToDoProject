@@ -30,7 +30,7 @@ router.post('/',async(req,res) => {
         ToDo: req.body.ToDo
     })
         if(await toDo.save())
-            res.status(201).json(t0Do)
+            res.status(200).json(t0Do)
         else
             res.status(404).send('Error')
 })
