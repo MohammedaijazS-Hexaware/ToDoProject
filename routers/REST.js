@@ -12,7 +12,7 @@ router.get('/',async(req,res)=>{
         res.status(200).json(List)
         }
     }catch(err){
-        res.status(500).send('Error'+err)
+        res.status(404).send('Error'+err)
     }
 })
 
