@@ -3,24 +3,34 @@ const router=express.Router()
 const Entire = require('../models/ToDo')
 
 router.get('/',async(req,res)=>{
-
+    try{
         const List= await Entire.find()
-        if(List.length>0){
-            res.status(200).json(List)
-        }else{
-            res.status(404).json({Message:'No ToDo Tasks!!'})
+        if(List.length == 0){
+            res.status(404).json({Message:'No ToDo Lists'})
         }
+        else{
+        res.status(200).json(List)
+        }
+    }catch(err){
+        res.status(500).send('Error'+err)
+    }
 })
 
 router.get('/:id',async(req,res)=>{
-
-        const list= await Entire.findById(req.params.id)
-        if(list!=null){
-        res.status(200).json(list)
+    try{
+        const List= await Entire.findById(req.params.id)
+        if(List==null){
+            console.log('In If')
+            res.status(200).json({Message:'No Particular ToDo List'})
         }
         else{
-            res.status(404).json({Error:'No ToDo Found!!'})
+            console.log('Here')
+            res.status(200).json(List)
         }
+    }catch(err){
+        console.log('In Catch')
+        res.status(200).send('Error'+err)
+    }
 })
 
 router.post('/',async(req,res) => {
@@ -29,23 +39,23 @@ router.post('/',async(req,res) => {
         Title: req.body.Title,
         ToDo: req.body.ToDo
     })
-        if(await toDo.save())
-            res.status(200).json(t0Do)
-        else
-            res.status(404).send('Error')
+
+    try{
+        const tD1= await toDo.save()
+        res.json(tD1)
+    }catch(err){
+        res.send('Error' + err)
+    }
 })
 
-
 router.patch('/:id',async(req,res) => {
-
+    try{
         const tD =await Entire.findById(req.params.id)
-        if(tD!=null){
         tD.ToDo=req.body.ToDo
         const tD1=await tD.save()
         res.json(tD1)
-        }
-    else{
-        res.status(404).json({Message:'Error'})
+    }catch(err){
+        res.send('Error'+err)
     }
 })
 
