@@ -2,12 +2,13 @@ const express=require('express')
 const mongoose=require('mongoose')
 const dotenv=require('dotenv')
 const morgan=require('morgan')
-app.use(morgan('dev'));
 dotenv.config();
 const endpoint=process.env.API_URL;
 const port=process.env.PORT || 9000;
 
 const app=express()
+
+app.use(morgan('dev'));
 
 mongoose.connect(endpoint,{useNewUrlParser:true})
 
