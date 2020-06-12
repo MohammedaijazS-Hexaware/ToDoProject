@@ -5,11 +5,11 @@ const Entire = require('../models/ToDo')
 router.get('/',async(req,res)=>{
     try{
         const List= await Entire.find()
-        if(List.length==0){
-            res.status(500).send(null,'No ToDo Lists are there right now!!')
+        if(List.length>0){
+            console.log('ToDo Lists')
+            res.status(200).json(List)
         }else{
-            console.log('All ToDo lists')
-        res.status(200).json(List)
+            res.status(404).json({Message:'No ToDo Tasks!!'})
         }
     }catch(err){
         res.status(500).send('Error'+err)
@@ -19,7 +19,12 @@ router.get('/',async(req,res)=>{
 router.get('/:id',async(req,res)=>{
     try{
         const list= await Entire.findById(req.params.id)
+        if(list!=null){
         res.status(200).json(list)
+        }
+        else{
+            res.status(404).json({Error:'No ToDo Found!!'})
+        }
     }catch(err){
         res.status(500).send('Error'+err)
     }
