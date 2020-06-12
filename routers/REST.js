@@ -8,8 +8,8 @@ router.get('/',async(req,res)=>{
         if(List.length==0){
             res.status(500).send(null,'No ToDo Lists are there right now!!')
         }else{
+            console.log('All ToDo lists')
         res.status(200).json(List)
-        console.log('All ToDo lists')
         }
     }catch(err){
         res.status(500).send('Error'+err)
