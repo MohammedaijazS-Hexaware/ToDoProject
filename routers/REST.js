@@ -57,7 +57,7 @@ router.patch('/:id',async(req,res) => {
             res.status(200).json(tD1)
         }
     }catch(err){
-        res.send('Error'+err)
+        res.send('Check your url again')
     }
 })
 
