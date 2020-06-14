@@ -49,7 +49,7 @@ router.patch('/:id',async(req,res) => {
     try{
         const tD =await Entire.findById(req.params.id)
         if(tD==null){
-            res.status(200).json({Message:'No Particular ToDo List'})
+            res.status(404).json({Message:'No Particular ToDo List'})
         }
         else{
             tD.ToDo=req.body.ToDo
