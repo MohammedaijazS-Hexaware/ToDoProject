@@ -26,7 +26,7 @@ router.get('/:id',async(req,res)=>{
             res.status(200).json(List)
         }
     }catch(err){
-        res.status(200).send('It is a wrong url. try again')
+        res.status(404).send('It is a wrong url. try again')
     }
 })
 
