@@ -41,7 +41,7 @@ router.post('/',async(req,res) => {
         const tD1= await toDo.save()
         res.status(201).json(tD1)
     }catch(err){
-        res.send('Error' + err)
+        res.send('Cannot create the toDo')
     }
 })
 
