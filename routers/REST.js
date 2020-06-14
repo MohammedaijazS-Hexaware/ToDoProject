@@ -20,7 +20,7 @@ router.get('/:id',async(req,res)=>{
     try{
         const List= await Entire.findById(req.params.id)
         if(List==null){
-            res.status(200).json({Message:'No Particular ToDo List'})
+            res.status(404).json({Message:'No Particular ToDo List'})
         }
         else{
             res.status(200).json(List)
@@ -39,7 +39,7 @@ router.post('/',async(req,res) => {
 
     try{
         const tD1= await toDo.save()
-        res.json(tD1)
+        res.status(201).json(tD1)
     }catch(err){
         res.send('Error' + err)
     }
@@ -69,7 +69,7 @@ router.delete('/:id',async(req,res) => {
         }
         else{
             const tD1=await tD.remove()
-            res.send('Deleted')
+            res.status(200).send('Deleted')
         }
     }catch(err){
         res.send('Error'+err)
