@@ -72,7 +72,7 @@ router.delete('/:id',async(req,res) => {
             res.status(200).send('Deleted')
         }
     }catch(err){
-        res.send('Error'+err)
+        res.send('Cannot Delete. Something went wrong')
     }
 })
 
