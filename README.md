@@ -78,4 +78,16 @@ app.listen(port,function(){
 const empRouter=require('./routers/REST')
 app.use('/ToDo',empRouter)
 ```
+- Go to that respective file (here, it is REST.js) and initialize Router from Express as below:
+```
+const express=require('express')
+const router=express.Router()
+```
+- By using this router, make all the GET,POST,PATCH and DELETE end points.
 
+#### Heroku Cloud
+- If the code is ready to go, push the project to your GitHub Account.
+- After that, click this url https://signup.heroku.com/t/platform?c=7013A000000ib1xQAA&gclid=CjwKCAjwlZf3BRABEiwA8Q0qq4hiLRdBWeHq8xnSdXuqpXtSnl_ONiM56xyu3Uj-z3NXEDDoT4eXuxoCmZYQAvD_BwE and sign up into Heroku
+- Create an app with a unique name and link it to your GitHub Project.
+- Then open Settings, click Reveal Config Vars.
+-There, give your connection string parameter name as key and connection string as value there.
